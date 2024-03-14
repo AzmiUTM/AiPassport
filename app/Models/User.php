@@ -34,6 +34,7 @@ class User extends Authenticatable
         'ppv_updatedby'
     ];
 
+    // kena merge
     /**
      * The attributes that should be hidden for serialization.
      *
