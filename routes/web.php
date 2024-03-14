@@ -1,7 +1,12 @@
 <?php
 
-use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\LogController;
+use App\Http\Controllers\PhotoController;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\SettingController;
+use App\Http\Controllers\StudentController;
+use App\Http\Controllers\DashboardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,17 +20,39 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect()->route('login');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::middleware(['auth','verified'])->group(function (){
+    Route::controller(DashboardController::class)->group(function () {
+        Route::get('/dashboard', 'index')->name('dashboard');
+    });
+});
 
 Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    Route::controller(ProfileController::class)->group(function (){
+        Route::get('/profile', 'edit')->name('profile.edit');
+        Route::patch('/profile', 'update')->name('profile.update');
+        Route::delete('/profile', 'destroy')->name('profile.destroy');
+    });
+
+    Route::controller(SettingController::class)->group(function (){
+        Route::get('/setting/list', 'list')->name('setting.list');
+        Route::get('/setting/create', 'create')->name('setting.create');
+        Route::post('/setting/store', 'store')->name('setting.store');
+        Route::post('/setting/delete', 'delete')->name('setting.delete');
+        Route::get('/setting/edit/{ppv_settingid}', 'edit')->name('setting.edit');
+        Route::patch('/setting/update/{ppv_settingid}', 'update')->name('setting.update');
+    });
+
+    Route::get('/photo/list', [PhotoController::class, 'list'])->name('photo.list');
+    Route::get('/log/list', [LogController::class, 'list'])->name('log.list');
+
+    Route::controller(StudentController::class)->group(function () {
+        Route::get('/student/list', 'list')->name('student.list');
+    });
+
 });
 
 require __DIR__.'/auth.php';
