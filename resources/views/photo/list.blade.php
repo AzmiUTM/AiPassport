@@ -73,9 +73,9 @@
                                         <div class="dropdown-menu dropdown-menu-end">
                                             <a class="dropdown-item " type="button" data-bs-toggle="modal" data-bs-target="#modal-photo-{{$key}}"><i class="mdi mdi-view-list-outline text-info"></i><span class="ms-1">View</span></a>
                                             <!-- item-->
-                                            <a class="dropdown-item " href=""><i class="mdi mdi-pencil text-primary"></i><span class="ms-1">Edit</span></a>
+                                            {{-- <a class="dropdown-item " href=""><i class="mdi mdi-pencil text-primary"></i><span class="ms-1">Edit</span></a> --}}
                                             <!-- item-->
-                                            <a class="dropdown-item " href="javascript:void(0);"><i class="mdi mdi-delete text-danger"></i><span class="ms-1">Delete</span></a>
+                                            {{-- <a class="dropdown-item " href="javascript:void(0);"><i class="mdi mdi-delete text-danger"></i><span class="ms-1">Delete</span></a> --}}
                                         </div>
                                     </div>
                                     <div class="modal fade" id="modal-photo-{{$key}}" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">

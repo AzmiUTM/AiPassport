@@ -24,7 +24,6 @@
                 </span>
                 <span>
                     <span class="account-user-name">{{strtoupper(Auth::user()->ppv_username)}}</span>
-                    <span class="account-position">Founder</span>
                 </span>
             </a>
             <div class="dropdown-menu dropdown-menu-end dropdown-menu-animated topbar-dropdown-menu profile-dropdown">
