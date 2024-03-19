@@ -1,25 +1,23 @@
-@extends('layouts.app')
+@extends('layouts.app', [
+    'parentSectionMain' => 'dashboard',
+    'parentSection' => 'dashboard',
+    'elementName' => 'dashboard',
+])
 
 @section('content')
-<div class="container-fluid">
+ @component('layouts.headers.auth')
+        @component('layouts.headers.breadcrumbs')
+            @slot('title')
+                {{ __('Home') }}
+            @endslot
 
-    <!-- start page title -->
-    <div class="row">
-        <div class="col-12">
-            <div class="page-title-box">
-                <div class="page-title-right">
-                    <ol class="breadcrumb m-0">
+            <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">{{ __('Dashboards') }}</a></li>
+            <li class="breadcrumb-item active" aria-current="page">{{ __('Home') }}</li>
+        @endcomponent
+        {{-- @include('layouts.headers.cards') --}}
+    @endcomponent
 
-                        <li class="breadcrumb-item active">Dashboards</li>
-                    </ol>
-                </div>
-                <h4 class="page-title">Dashboards</h4>
-            </div>
-        </div>
-    </div>
-    <!-- end page title -->
-
-
+<div class="container-fluid mt--6">
     <div class="row">
         <div class="col-xxl-3 col-lg-6">
             <div class="card widget-flat">
@@ -67,9 +65,7 @@
                 </div>
             </div>
         </div> <!-- end col-->
-
-
-    <!-- end row-->
-
+  
 </div>
+  @include('layouts.footers.auth')
 @endsection
