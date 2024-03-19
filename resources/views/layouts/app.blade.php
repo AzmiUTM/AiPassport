@@ -1,89 +1,81 @@
+
 <!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <title>{{ config('app.name', 'Laravel') }}</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description">
-        <meta content="Coderthemes" name="author">
-        <!-- App favicon -->
-        {{-- <link rel="shortcut icon" href="assets/images/favicon.ico"> --}}
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
-        <!-- third party css -->
-        @yield('css')
-        <link href="{{asset('temp')}}/assets/css/vendor/sweetalert2.min.css" rel="stylesheet" >
-        <!-- third party css end -->
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <!-- App css -->
-        <link href="{{asset('temp')}}/assets/css/icons.min.css" rel="stylesheet" type="text/css">
-        <link href="{{asset('temp')}}/assets/css/app.min.css" rel="stylesheet" type="text/css" id="light-style">
-        <link href="{{asset('temp')}}/assets/css/app-dark.min.css" rel="stylesheet" type="text/css" id="dark-style">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    </head>
+    <title>{{ config('app.name', 'Argon Dashboard') }}</title>
+    <!-- Favicon-->
+    <link href="{{ asset('argon') }}/img/brand/myaims.png" rel="icon" type="image/png">
 
-    <body class="loading" data-layout-config='{"leftSideBarTheme":"dark","layoutBoxed":false, "leftSidebarCondensed":false, "leftSidebarScrollable":false,"darkMode":false, "showRightSidebarOnStart": true}'>
-        <!-- Begin page -->
-        <div class="wrapper">
-        @include('layouts.navigation')
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.0/themes/smoothness/jquery-ui.css" />
+    <!-- Icons -->
+    <link href="{{ asset('argon') }}/vendor/nucleo/css/nucleo.css" rel="stylesheet">
+    <link href="{{ asset('argon') }}/vendor/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('argon') }}/vendor/quill/dist/quill.core.css">
 
-            <!-- ============================================================== -->
-            <!-- Start Page Content here -->
-            <!-- ============================================================== -->
+    @yield('css')
+    @stack('css')
 
-            <div class="content-page">
-                <div class="content">
-                    <!-- Topbar Start -->
-                    @include('layouts.topbar')
-                    <!-- end Topbar -->
+    <link rel="stylesheet" type="text/css" href="{{ asset('/css/custom.css') }}">
 
-                    <!-- Start Content-->
-                    @yield('content')
-                    <!-- container -->
+    <!-- Select2 CSS load before argon-->
+    <link rel="stylesheet" href="{{ asset('argon') }}/vendor/select2/dist/css/select2.min.css" type="text/css">
 
-                </div> <!-- content -->
+    <!-- Argon CSS -->
+    <link type="text/css" href="{{ asset('argon') }}/css/argon.css?v=1.0.0" rel="stylesheet">
+</head>
 
-                <!-- Footer Start -->
-                @include('layouts.footer')
-                <!-- end Footer -->
-            </div>
-            <!-- ============================================================== -->
-            <!-- End Page content -->
-            <!-- ============================================================== -->
-        </div>
-        <!-- END wrapper -->
+<body class="{{ $class ?? '' }}">
+    @auth()
+    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+        @csrf
+    </form>
+    @if (!in_array(request()->route()->getName(), ['welcome', 'page.pricing', 'page.lock']))
 
 
-        <!-- Right Sidebar -->
+    @include('layouts.navbars.sidebar')
 
+    @endif
+    @endauth
 
-        <div class="rightbar-overlay"></div>
-        <!-- /End-bar -->
+    <div class="main-content">
+        @include('layouts.navbars.navbar')
+        @yield('content')
+    </div>
 
+    @if(!auth()->check() || in_array(request()->route()->getName(), ['welcome', 'page.pricing', 'page.lock']))
+    @include('layouts.footers.guest')
+    @endif
 
-        <!-- bundle -->
+    @yield('script')
+    <script src="{{ asset('argon') }}/vendor/jquery/dist/jquery.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js"></script>
+    <script src="{{ asset('argon') }}/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="{{ asset('argon') }}/vendor/js-cookie/js.cookie.js"></script>
+    <script src="{{ asset('argon') }}/vendor/jquery.scrollbar/jquery.scrollbar.min.js"></script>
+    <script src="{{ asset('argon') }}/vendor/jquery-scroll-lock/dist/jquery-scrollLock.min.js"></script>
+    <script src="{{ asset('argon') }}/vendor/lavalamp/js/jquery.lavalamp.min.js"></script>
+    <!-- Optional JS -->
+    <script src="{{ asset('argon') }}/vendor/chart.js/dist/Chart.min.js"></script>
+    <script src="{{ asset('argon') }}/vendor/chart.js/dist/Chart.extension.js"></script>
 
+    <script src="{{ asset('argon') }}/vendor/nouislider/distribute/nouislider.min.js"></script>
+    <script src="{{ asset('argon') }}/vendor/autocomplete/bootstrap3-typeahead.min.js"></script>
 
-        {{-- <script src="{{asset('temp')}}/assets/js/jquery.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script> --}}
-        <script src="{{asset('temp')}}/assets/js/vendor.min.js"></script>
-        <script src="{{asset('temp')}}/assets/js/app.min.js"></script>
+    @stack('js')
 
-        {{-- <!-- third party:js -->
-        <script src="{{asset('temp')}}/assets/js/vendor/apexcharts.min.js"></script>
-        <!-- third party end -->
-
-        <!-- Chat js -->
-        <script src="{{asset('temp')}}/assets/js/ui/component.chat.js"></script>
-
-        <!-- Todo js -->
-        <script src="{{asset('temp')}}/assets/js/ui/component.todo.js"></script>
-
-        <!-- demo:js -->
-        <script src="{{asset('temp')}}/assets/js/pages/demo.widgets.js"></script>
-        <!-- demo end --> --}}
-
-        @yield('script')
-        <script src="{{asset('temp')}}/assets/js/vendor/sweetalert2.min.js"></script>
+    <!-- Argon JS2 -->
+    <script src="{{ asset('argon') }}/js/argon.js?v=1.0.0"></script>
+    <script src="{{ asset('argon') }}/js/demo.min.js"></script>
+    <script src="{{asset('temp')}}/assets/js/vendor/sweetalert2.min.js"></script>
         <script>
         window.addEventListener('load', function() {
             setTimeout(function() {
@@ -100,5 +92,5 @@
             }, 1500); // Wait for 3 seconds (3000 milliseconds)
         });
         </script>
-    </body>
+</body>
 </html>
