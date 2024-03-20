@@ -9,11 +9,9 @@
                 <div class="card bg-secondary shadow border-0">
                     <div class="card-header bg-transparent pb-5">
                         <div class="card-header mx-auto" align="center">
-                            <span> <img src="{{ asset('argon') }}/img/brand/myaims-login-logo-red.png" class="w-75" alt="Logo"> </span><br/>
-                            <span class="logo_title mt-5"> Sign In to MyAIMS </span><br>
-                            <span class="logo_title mt-0"> <small><em>*For Registered User Only & Not For Student </em></small></span>
-                            <!--            <h1>--><?php //echo $message?><!--</h1>-->
-
+                            <span> <img src="{{ asset('build') }}/image/logo_utm.png" class="w-75" alt="Logo"> </span><br/>
+                            <span class="logo_title mt-5"> Sign In to Passport Photo Validator </span><br>
+                            {{-- <span class="logo_title mt-0"> <small><em>*For Registered User Only & Not For Student </em></small></span> --}}
                         </div>
 
                         {{--<div class="text-muted text-center mt-2 mb-3"><small>{{ __('Sign in with') }}</small></div>--}}

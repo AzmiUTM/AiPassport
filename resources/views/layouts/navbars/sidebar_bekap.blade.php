@@ -2,7 +2,7 @@
     <div class="scrollbar-inner scroll-scrollx_visible">
         <div class="sidenav-header d-flex align-items-center">
             <a class="navbar-brand" href="{{ route('home') }}">
-                <img src="{{ asset('argon') }}/img/brand/myaims-menu-logo.png" class="navbar-brand-img" alt="...">
+                <img src="{{ asset('build') }}/image/logo-utm.png" class="navbar-brand-img" alt="...">
             </a>
             <div class="ml-auto">
                 <!-- Sidenav toggler -->

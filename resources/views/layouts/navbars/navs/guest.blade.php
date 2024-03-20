@@ -1,7 +1,7 @@
 <nav id="navbar-main" class="navbar navbar-horizontal navbar-transparent navbar-main navbar-expand-lg navbar-light">
     <div class="container">
         <a class="navbar-brand" href="#">
-            <img src="{{ asset('argon') }}/img/brand/myaims-logo-white-transparent.png" />
+            <img src="{{ asset('build')}}/image/logo_utm.png" />
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapse" aria-controls="navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
