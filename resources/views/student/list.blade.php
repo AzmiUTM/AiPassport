@@ -1,39 +1,37 @@
-@extends('layouts.app')
-
-    @section('css')
-        @include('include.datatable_css')
-    @endsection
-
+@extends('layouts.app', [
+    'parentSectionMain' => 'student',
+    'parentSection' => 'student',
+    'elementName' => 'student',
+])
 
 @section('content')
-<div class="container-fluid">
+    @component('layouts.headers.auth')
+        @component('layouts.headers.breadcrumbs')
+            @slot('title')
+                {{ __('Students') }}
+            @endslot
 
-    <!-- start page title -->
-    <div class="row">
-        <div class="col-12">
-            <div class="page-title-box">
-                <div class="page-title-right">
-                    <ol class="breadcrumb m-0">
-                        <li class="breadcrumb-item"><a href="javascript: void(0);">Student</a></li>
-                        <li class="breadcrumb-item active">List of Student</li>
-                    </ol>
-                </div>
-                <h4 class="page-title">List of Student</h4>
-            </div>
-        </div>
-    </div>
-    <!-- end page title -->
-
+        @endcomponent
+        {{-- @include('layouts.headers.cards') --}}
+    @endcomponent
+<div class="container-fluid mt--6">
     <div class="row">
         <div class="col-12">
             <div class="card">
+                 <div class="card-header">
+                    <div class="row align-items-center">
+                        <div class="col-8">
+                            <h3 class="mb-0">List of Student</h3>
+                        </div>
+                    </div>
+                </div>
                 <div class="card-body">
-                    <table id="scroll-horizontal-datatable" class="table w-100">
-                        <thead>
+                    <table class="table table-flush" id="tblListStud">
+                        <thead class="thead-light">
                             <tr>
                                 <th>No.</th>
                                 <th>Name</th>
-                                <th>Modul</th>
+                                <th>Module</th>
                                 <th>Ic No</th>
                                 <th>Email</th>
                                 <th>Level</th>
@@ -56,30 +54,39 @@
             </div> <!-- end card -->
         </div><!-- end col-->
     </div>
+    @include('layouts.footers.auth')
 </div>
+
+
+
 @endsection
+@push('css')
 
-@section('script')
-@include('include.datatable_js')
-<script>
-    $(document).ready(function(){
-        "use strict";
-        $("#scroll-horizontal-datatable").DataTable({
-            scrollX: !0,
-            language: {
-                paginate: {
-                    previous: "<i class='mdi mdi-chevron-left'>",
-                    next: "<i class='mdi mdi-chevron-right'>",
-                },
-            },
-            drawCallback: function () {
-                $(".dataTables_paginate > .pagination").addClass(
-                    "pagination-rounded"
-                );
-            },
-        });
+<link rel="stylesheet" href="{{ asset('argon') }}/vendor/datatables.net-bs4/css/dataTables.bootstrap4.min.css">
+<link rel="stylesheet" href="{{ asset('argon') }}/vendor/datatables.net-buttons-bs4/css/buttons.bootstrap4.min.css">
+<link rel="stylesheet" href="{{ asset('argon') }}/vendor/datatables.net-select-bs4/css/select.bootstrap4.min.css">
+@endpush
 
+@push('js')
+<script src="{{ asset('argon') }}/vendor/datatables.net/js/jquery.dataTables.min.js"></script>
+<script src="{{ asset('argon') }}/vendor/datatables.net-bs4/js/dataTables.bootstrap4.min.js"></script>
+<script src="{{ asset('argon') }}/vendor/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
+<script src="{{ asset('argon') }}/vendor/datatables.net-buttons-bs4/js/buttons.bootstrap4.min.js"></script>
+<script src="{{ asset('argon') }}/vendor/datatables.net-buttons/js/buttons.html5.min.js"></script>
+<script src="{{ asset('argon') }}/vendor/datatables.net-buttons/js/buttons.flash.min.js"></script>
+<script src="{{ asset('argon') }}/vendor/datatables.net-buttons/js/buttons.print.min.js"></script>
+<script src="{{ asset('argon') }}/vendor/datatables.net-select/js/dataTables.select.min.js"></script>
+<script src="{{ asset('argon') }}/vendor/sweetalert2/dist/sweetalert2.all.min.js"></script>
 
-    });
+<script type="text/javascript">
+$('#tblListStud').DataTable({
+    language:{
+        paginate:{
+            previous: "<",
+            next: ">"
+        }
+    },
+});
 </script>
-@endsection
+@endpush
+
