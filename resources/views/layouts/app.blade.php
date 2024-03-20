@@ -75,6 +75,8 @@
     <!-- Argon JS2 -->
     <script src="{{ asset('argon') }}/js/argon.js?v=1.0.0"></script>
     <script src="{{ asset('argon') }}/js/demo.min.js"></script>
+    @yield('scripts')
+
     <script src="{{asset('temp')}}/assets/js/vendor/sweetalert2.min.js"></script>
         <script>
         window.addEventListener('load', function() {

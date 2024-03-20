@@ -11,61 +11,79 @@
                 {{ __('Home') }}
             @endslot
 
-            <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">{{ __('Dashboards') }}</a></li>
-            <li class="breadcrumb-item active" aria-current="page">{{ __('Home') }}</li>
+
         @endcomponent
         {{-- @include('layouts.headers.cards') --}}
     @endcomponent
 
 <div class="container-fluid mt--6">
     <div class="row">
-        <div class="col-xxl-3 col-lg-6">
-            <div class="card widget-flat">
-                <div class="card-body">
-                    <div class="float-end">
-                        <i class="mdi mdi-currency-btc widget-icon bg-danger rounded-circle text-white"></i>
-                    </div>
-                    <h5 class="text-muted fw-normal mt-0" title="Revenue">Settings</h5>
-                    <h3 class="mt-3 mb-3">{{$setting}}</h3>
-                    <p class="mb-0 text-muted">
-                        <span class="text-nowrap">Latest Added {{Carbon\Carbon::parse($setLatest->ppv_addedon)->diffForHumans()}}</span>
-                    </p>
+        <div class="col-xl-3 col-lg-6">
+            <div class="card card-stats mb-4">
+            <div class="card-body">
+                <div class="row">
+                <div class="col">
+                    <h5 class="card-title text-uppercase text-muted mb-0">Settings</h5>
+                    <span class="h2 font-weight-bold mb-0">{{$setting}}</span>
                 </div>
-            </div>
-        </div> <!-- end col-->
-
-        <div class="col-xxl-3 col-lg-6">
-            <div class="card widget-flat">
-                <div class="card-body">
-                    <div class="float-end">
-                        <i class="mdi mdi-account widget-icon bg-primary rounded-circle text-white"></i>
+                <div class="col-auto">
+                    <div class="icon icon-shape bg-danger text-white rounded-circle shadow">
+                    <i class="fas fa-chart-bar"></i>
                     </div>
-                    <h4 class="text-muted fw-normal mt-0" title="Growth">Users</h4>
-                    <h3 class="mt-3 mb-3">{{$user}}</h3>
-                    <p class="mb-0 text-muted">
-
-                        <span class="text-nowrap">Added Recently</span>
-                    </p>
                 </div>
-            </div>
-        </div> <!-- end col-->
+                </div>
+                <p class="mt-3 mb-0 text-muted text-sm">
 
-        <div class="col-xxl-3 col-lg-6">
-            <div class="card widget-flat">
-                <div class="card-body">
-                    <div class="float-end">
-                        <i class="mdi mdi-account widget-icon bg-primary rounded-circle text-white"></i>
+                <span class="text-nowrap">Latest Added {{Carbon\Carbon::parse($setLatest->ppv_addedon)->diffForHumans()}}</span>
+                </p>
+            </div>
+            </div>
+        </div>
+
+        <div class="col-xl-3 col-lg-6">
+            <div class="card card-stats mb-4 ">
+            <div class="card-body">
+                <div class="row">
+                <div class="col">
+                    <h5 class="card-title text-uppercase text-muted mb-0">Users</h5>
+                    <span class="h2 font-weight-bold mb-0">{{$user}}</span>
+                </div>
+                <div class="col-auto">
+                    <div class="icon icon-shape bg-warning text-white rounded-circle shadow">
+                    <i class="fas fa-chart-pie"></i>
                     </div>
-                    <h4 class="text-muted fw-normal mt-0" title="Growth">Photos</h4>
-                    <h3 class="mt-3 mb-3">{{$photo}}</h3>
-                    <p class="mb-0 text-muted">
-
-                        <span class="text-nowrap">Added Recently</span>
-                    </p>
                 </div>
+                </div>
+                <p class="mt-3 mb-0 text-muted text-sm">
+                    <span class="text-nowrap">Added Recently</span>
+                </p>
             </div>
-        </div> <!-- end col-->
-  
+            </div>
+        </div>
+
+        <div class="col-xl-3 col-lg-6">
+            <div class="card card-stats mb-4">
+            <div class="card-body">
+                <div class="row">
+                <div class="col">
+                    <h5 class="card-title text-uppercase text-muted mb-0">Photos</h5>
+                    <span class="h2 font-weight-bold mb-0">{{$photo}}</span>
+                </div>
+                <div class="col-auto">
+                    <div class="icon icon-shape bg-yellow text-white rounded-circle shadow">
+                    <i class="fas fa-users"></i>
+                    </div>
+                </div>
+                </div>
+                <p class="mt-3 mb-0 text-muted text-sm">
+                <span class="text-warning mr-2"><i class="fas fa-arrow-down"></i> 1.10%</span>
+                <span class="text-nowrap">Added Recently</span>
+                </p>
+            </div>
+            </div>
+        </div>
+
+    </div>
+    @include('layouts.footers.auth')
 </div>
-  @include('layouts.footers.auth')
 @endsection

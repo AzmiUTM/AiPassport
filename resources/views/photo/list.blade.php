@@ -1,34 +1,27 @@
-@extends('layouts.app')
-
-    @section('css')
-        @include('include.datatable_css')
-    @endsection
-
+@extends('layouts.app', [
+    'parentSectionMain' => 'photo',
+    'parentSection' => 'photo',
+    'elementName' => 'photo',
+])
 
 @section('content')
-<div class="container-fluid">
+    @component('layouts.headers.auth')
+        @component('layouts.headers.breadcrumbs')
+        @slot('title')
+        {{ __('Students') }}
+        @endslot
 
-    <!-- start page title -->
-    <div class="row">
-        <div class="col-12">
-            <div class="page-title-box">
-                <div class="page-title-right">
-                    <ol class="breadcrumb m-0">
-                        <li class="breadcrumb-item"><a href="javascript: void(0);">Settings</a></li>
-                        <li class="breadcrumb-item active">List of Photo</li>
-                    </ol>
-                </div>
-                <h4 class="page-title">List of Photo</h4>
-            </div>
-        </div>
-    </div>
-    <!-- end page title -->
+        @endcomponent
+        {{-- @include('layouts.headers.cards') --}}
+    @endcomponent
 
+@section('content')
+<div class="container-fluid mt--6">
     <div class="row">
         <div class="col-12">
             <div class="card">
                 <div class="card-body">
-                    <table id="scroll-horizontal-datatable" class="table w-100">
+                    <table class="table table-flush" id="tblListStud">
                         <thead>
                             <tr>
                                 <th width="5%">No.</th>
@@ -139,25 +132,16 @@
 </div>
 @endsection
 
-@section('script')
-@include('include.datatable_js')
-<script>
-    $(document).ready(function(){
-        "use strict";
-        $("#scroll-horizontal-datatable").DataTable({
-            scrollX: !0,
-            language: {
-                paginate: {
-                    previous: "<i class='mdi mdi-chevron-left'>",
-                    next: "<i class='mdi mdi-chevron-right'>",
-                },
-            },
-            drawCallback: function () {
-                $(".dataTables_paginate > .pagination").addClass(
-                    "pagination-rounded"
-                );
-            },
-        });
-    });
+@section('scripts')
+<script type="text/javascript">
+$('#tblListStud').DataTable({
+    language:{
+        paginate:{
+            previous: "<",
+            next: ">"
+        }
+    },
+});
 </script>
+
 @endsection

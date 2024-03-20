@@ -2,7 +2,7 @@
     <div class="scrollbar-inner scroll-scrollx_visible">
         <div class="sidenav-header d-flex align-items-center">
             <a class="navbar-brand" href="">
-                <img src="{{ asset('argon') }}/img/brand/myaims-menu-logo.png" class="navbar-brand-img" alt="...">
+                <img src="{{asset('build/image/logo_utm.png')}}" class="navbar-brand-img" alt="...">
             </a>
             <div class="ml-auto">
                 <!-- Sidenav toggler -->
@@ -22,10 +22,20 @@
                 <ul class="navbar-nav">
                     <!-- Nav items : Begin Dashboard Menu -->
                     <li class="nav-item ">
-                        <a class="nav-link {{ $elementName == 'dashboard' ? 'active' : '' }}" href="">
+                        <a class="nav-link {{ $elementName == 'dashboard' ? 'active' : '' }}" href="{{route('dashboard')}}">
                             <i class="ni ni-shop text-primary"></i>
                             <span class="nav-link-text">{{ __('Dashboard') }}</span>
                         </a>
+                        <a class="nav-link {{ $elementName == 'student' ? 'active' : '' }}" href="{{route('student.list')}}">
+                            <i class="ni ni-hat-3 text-primary"></i>
+                            <span class="nav-link-text">Students</span>
+                        </a>
+
+                        <a class="nav-link {{ $elementName == 'student' ? 'active' : '' }}" href=" {{route('photo.list')}}">
+                            <i class="ni ni-album-2 text-primary"></i>
+                            <span class="nav-link-text">Photo</span>
+                        </a>
+
                     </li>
                     <!-- Nav items : End Dashboard Menu -->
 
