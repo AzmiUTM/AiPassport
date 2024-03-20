@@ -25,7 +25,7 @@
                         <thead>
                             <tr>
                                 <th width="5%">No.</th>
-                                <th width="15%">Student Name</th>
+                                <th width="15%">Student Name2</th>
                                 <th>Photo Url</th>
                                 <th>Setting Name</th>
                                 <th>Created</th>
