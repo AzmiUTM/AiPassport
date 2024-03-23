@@ -76,6 +76,7 @@
                 </div>
                 </div>
                 <p class="mt-3 mb-0 text-muted text-sm">
+                <span class="text-warning mr-2"><i class="fas fa-arrow-down"></i> 1.10%</span>
                 <span class="text-nowrap">Added Recently</span>
                 </p>
             </div>
