@@ -42,60 +42,11 @@
                         </a>
 
                         <a class="nav-link {{ $elementName == 'logs' ? 'active' : '' }}" href="{{route('log.list')}}">
-                            <i class="uil uil-book-open"></i>
+                            <i class="ni ni-collection text-primary"></i>
                             <span class="nav-link-text">Logs</span>
                         </a>
                     </li>
                     <!-- Nav items : End Dashboard Menu -->
-
-                    <!-- Nav items : Begin Academic Menu -->
-
-                    <li class="nav-item">
-                        <a class="nav-link" href="#navbar-academic" data-toggle="collapse" role="button"
-                            aria-expanded=" 'true"
-                            aria-controls="navbar-academic">
-                            <i class="ni ni-hat-3 text-primary"></i>
-                            <span class=" nav-link-text">{{ __('Academic') }}</span>
-                        </a>
-                        <div class="collapse show" id="navbar-academic">
-                            <ul class="nav nav-sm flex-column">
-
-                                <!-- Nav items : Begin Search Student Menu -->
-
-                                    <li class="nav-item active">
-                                        <a class="nav-link" href="">
-                                            <span class="nav-link-text">{{ __('Search Student') }}</span>
-                                        </a>
-                                    </li>
-
-
-                                        <li class="nav-item active">
-                                            <a href="#navbar-academic-student-info" class="nav-link" data-toggle="collapse"
-                                                role="button"
-                                                aria-expanded="true"
-                                                aria-controls="navbar-academic-student-info">
-                                                <span class="nav-link-text">{{ __('Student Info') }}</span></a>
-                                            <div class="collapse show"
-                                                id="navbar-academic-student-info" style="">
-                                                <ul class="nav nav-sm flex-column">
-                                                    <li class="nav-item active">
-                                                        <a href=""
-                                                            class="nav-link">{{ __('Personal Info') }}</a>
-                                                    </li>
-                                                    <li
-                                                        class="nav-item active">
-                                                        <a href=""
-                                                            class="nav-link">{{ __('Academic Record') }}</a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </li>
-
-                                <!-- Nav items : End Academic : Student Info Menu-->
-                            </ul>
-                        </div>
-                    </li>
-                    <!-- Nav items : End Student Income Menu -->
                 </ul>
             </div>
         </div>

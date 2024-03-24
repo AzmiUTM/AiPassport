@@ -10,7 +10,7 @@
             @slot('title')
                 {{ __('Photos') }}
             @endslot
-
+            <li class="breadcrumb-item active" aria-current="page">List of Photo</li>
         @endcomponent
         {{-- @include('layouts.headers.cards') --}}
     @endcomponent
