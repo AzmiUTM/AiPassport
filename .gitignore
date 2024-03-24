@@ -1,8 +1,10 @@
 /node_modules
 /public/hot
 /public/storage
+/public/secure
 /storage/*.key
 /vendor
+.gitignore
 .env
 .env.backup
 .env.production
