@@ -91,7 +91,7 @@
                         timerProgressBar: true,
                     })
                 @endif
-            }, 1500); // Wait for 3 seconds (3000 milliseconds)
+            }, 500); // Wait for 3 seconds (3000 milliseconds)
         });
         </script>
 </body>
