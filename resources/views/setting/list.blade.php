@@ -11,7 +11,7 @@
             @slot('title')
                 {{ __('Settings') }}
             @endslot
-
+            <li class="breadcrumb-item active" aria-current="page">List of Setting</li>
         @endcomponent
         {{-- @include('layouts.headers.cards') --}}
     @endcomponent
