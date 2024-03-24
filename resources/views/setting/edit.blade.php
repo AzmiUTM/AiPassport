@@ -1,25 +1,21 @@
-@extends('layouts.app')
+@extends('layouts.app', [
+    'parentSectionMain' => 'settings',
+    'parentSection' => 'settings',
+    'elementName' => 'settings',
+])
 
 
 @section('content')
-<div class="container-fluid">
+    @component('layouts.headers.auth')
+        @component('layouts.headers.breadcrumbs')
+            @slot('title')
+                {{ __('Settings') }}
+            @endslot
+            <li class="breadcrumb-item active" aria-current="page">Edit Setting</li>
+        @endcomponent
+    @endcomponent
 
-    <!-- start page title -->
-    <div class="row">
-        <div class="col-12">
-            <div class="page-title-box">
-                <div class="page-title-right">
-                    <ol class="breadcrumb m-0">
-                        <li class="breadcrumb-item"><a href="javascript: void(0);">Settings</a></li>
-                        <li class="breadcrumb-item active">Edit Setting</li>
-                    </ol>
-                </div>
-                <h4 class="page-title">Edit Setting</h4>
-            </div>
-        </div>
-    </div>
-    <!-- end page title -->
-
+<div class="container-fluid mt--6">
     <div class="row">
         <div class="col-12">
             <div class="card">
@@ -68,8 +64,7 @@
                                         <tr>
                                             <th>Name</th>
                                             <th>Status</th>
-
-                                            <th class="text-center">Action</th>
+                                            <th class="text-center" width="10%">Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -81,14 +76,14 @@
                                                 <textarea class="form-control" id="example-textarea" rows="3" placeholder="Item Value..." name="ppv_settingvalue[]">{{$item->ppv_settingvalue}}</textarea>
                                             </td>
                                             <td>
-                                                <select class="form-select" id="example-select" name="ppv_status[]">
+                                                <select class="form-control" id="example-select" name="ppv_status[]">
                                                     <option value="ACTIVE"{{ ($item->ppv_status == 'ACTIVE') ? 'selected':''}}>Active</option>
                                                     <option value="NOT ACTIVE" {{ ($item->ppv_status == 'NOT ACTIVE') ? 'selected':''}}>Not Active</option>
                                                 </select>
                                             </td>
                                             @if($loop->last)
                                             <td class="text-center">
-                                                <button type="button" class="btn btn-primary" id="btnAdd"><i class="dripicons-plus"></i></button>
+                                                <button type="button" class="btn btn-primary" id="btnAdd"><i class="ni ni-fat-add"></i></button>
                                             </td>
                                             @endif
                                         </tr>
@@ -98,14 +93,14 @@
                                                 <textarea class="form-control" id="example-textarea" rows="3" placeholder="Item Value..." name="ppv_settingvalue[]"></textarea>
                                             </td>
                                             <td>
-                                                <select class="form-select" id="example-select" name="ppv_status[]">
+                                                <select class="form-control" id="example-select" name="ppv_status[]">
                                                     <option value="ACTIVE">Active</option>
                                                     <option value="NOT ACTIVE">Not Active</option>
                                                 </select>
                                             </td>
 
                                             <td class="text-center">
-                                                <button type="button" class="btn btn-primary" id="btnAdd"><i class="dripicons-plus"></i> Add</button>
+                                                <button type="button" class="btn btn-primary" id="btnAdd"><i class="ni ni-fat-add"></i></button>
                                             </td>
                                         </tr>
                                         @endforelse
@@ -122,36 +117,20 @@
             </div> <!-- end card -->
         </div><!-- end col-->
     </div>
+    @include('layouts.footers.auth')
 </div>
 @endsection
 
-@section('script')
-@include('include.datatable_js')
+@section('scripts')
+
 <script>
     $(document).ready(function(){
-        "use strict";
-        $("#scroll-horizontal-datatable").DataTable({
-            scrollX: !0,
-            language: {
-                paginate: {
-                    previous: "<i class='mdi mdi-chevron-left'>",
-                    next: "<i class='mdi mdi-chevron-right'>",
-                },
-            },
-            drawCallback: function () {
-                $(".dataTables_paginate > .pagination").addClass(
-                    "pagination-rounded"
-                );
-            },
-        });
-
-
         var i = 1;
         var x = 1;
         $("#btnAdd").click(function(){
             i++;
             x++;
-            $('#dynamic_field').append('<tr><td><textarea class="form-control" id="example-textarea" rows="3" placeholder="Item Value..." name="ppv_settingvalue[]"></textarea></td><td><select class="form-select" id="example-select" name="ppv_status[]"><option value="ACTIVE">Active</option><option value="NOT ACTIVE">Not Active</option></select></td><td class="text-center"><button type="button" class="btn btn-danger btn-remove"><i class="dripicons-trash"></i></button></td></tr>');
+            $('#dynamic_field').append('<tr><td><textarea class="form-control" id="example-textarea" rows="3" placeholder="Item Value..." name="ppv_settingvalue[]"></textarea></td><td><select class="form-control" id="example-select" name="ppv_status[]"><option value="ACTIVE">Active</option><option value="NOT ACTIVE">Not Active</option></select></td><td class="text-center"><button type="button" class="btn btn-danger btn-remove"><i class="ni ni-fat-delete"></i></button></td></tr>');
 
 
             $('.btn-remove').click(function(){

@@ -47,7 +47,6 @@ class SettingController extends Controller
     {
         // $user = Auth::user();
 
-        // dd($request->all());
         $request->validate([
                 // 'ppv_settingname' => 'required|'.Rule::unique(PpvSetting::class),
                 'ppv_settingname' => 'required|unique:'.PpvSetting::class,
@@ -69,7 +68,7 @@ class SettingController extends Controller
 
         foreach($request->ppv_settingvalue as $key=>$settingItem)
         {
-            $settingItem = PpvSettingItem::create([
+            PpvSettingItem::create([
                 'PPV_SETTINGID' =>  $settingId,
                 'PPV_SETTINGVALUE' => $request->ppv_settingvalue[$key],
                 'PPV_STATUS' => $request->ppv_status[$key],
@@ -114,20 +113,21 @@ class SettingController extends Controller
         ]);
 
         // dd($this->user->ppv_username);
+        // dd($request->all());
         $itemId = $request->ppv_setting_itemid;
         foreach($request->ppv_settingvalue as $key => $value)
         {
-            if(isset($itemId[$key]))
+            if(isset($itemId[$key]) && !empty($itemId[$key]) )
             {
                 // update
-                $settingItem = PpvSettingItem::where('ppv_setting_itemid',  $itemId[$key])->update([
+                PpvSettingItem::where('ppv_setting_itemid',  $itemId[$key])->update([
                     'PPV_SETTINGVALUE' => $request->ppv_settingvalue[$key],
                     'PPV_STATUS' => $request->ppv_status[$key],
                     'PPV_UPDATEDON' => NOW(),
                     'PPV_UPDATEDBY' => $this->user->ppv_username,
                 ]);
-            }elseif(!empty($itemId[$key])){
-                $settingItem = PpvSettingItem::create([
+            }else{
+                PpvSettingItem::create([
                     'PPV_SETTINGID' =>  $settingId,
                     'PPV_SETTINGVALUE' => $request->ppv_settingvalue[$key],
                     'PPV_STATUS' => $request->ppv_status[$key],
