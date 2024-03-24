@@ -10,7 +10,7 @@
             @slot('title')
                 {{ __('Students') }}
             @endslot
-
+            <li class="breadcrumb-item active" aria-current="page">List of Student</li>
         @endcomponent
         {{-- @include('layouts.headers.cards') --}}
     @endcomponent
