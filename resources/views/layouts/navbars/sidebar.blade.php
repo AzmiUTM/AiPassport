@@ -40,6 +40,11 @@
                             <i class="ni ni-album-2 text-primary"></i>
                             <span class="nav-link-text">Settings</span>
                         </a>
+
+                        <a class="nav-link {{ $elementName == 'logs' ? 'active' : '' }}" href="{{route('log.list')}}">
+                            <i class="uil uil-book-open"></i>
+                            <span class="nav-link-text">Logs</span>
+                        </a>
                     </li>
                     <!-- Nav items : End Dashboard Menu -->
 
