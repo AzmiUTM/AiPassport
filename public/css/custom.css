@@ -1,0 +1,118 @@
+/*datatable*/
+#datatable-main-activity_filter {
+  display:none;
+}
+#datatable-main-activity_length {
+  display:none;
+}
+table.dataTable.no-footer {
+  border-bottom: transparent !important;
+}
+
+.center{
+  text-align:center!important;
+  position: relative;
+  top: 30!important;
+}
+
+.list-group-item{
+  border:transparent !important;
+}
+
+/*modal popup footer align center*/
+.tb-center{
+  display: flex;
+  align-items: center;
+  justify-content: center!important;
+}
+
+.mb-30 {
+    margin-bottom: -30px!important;
+}
+.top15 {
+    top:15px!important;
+}
+
+.top25 {
+    top:25px!important;
+}
+/*margin-auto*/
+.m0{
+  margin: auto;
+}
+
+/*button float to right*/
+.button-right{
+  float:right;
+}
+
+/* dropdown for transfer button penawaran kursus */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  right: 0;
+  background-color: #fff;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+input[data-readonly], select[data-readonly]  {
+  pointer-events: none;
+}
+
+button[data-dnone]  {
+  display: none;
+}
+
+
+
+.paginate_button, .paginate_button:hover{
+  background-color: none !important;
+  border: none !important;
+  background: none !important;
+}
+
+.page-link{
+  transition: 0.25s ease-in-out !important;
+  border: none !important;
+}
+
+.navbar-light .navbar-nav .show > .nav-link,
+.navbar-light .navbar-nav .active > .nav-link,
+.navbar-light .navbar-nav .nav-link.show,
+.navbar-light .navbar-nav .nav-link.active  {
+  font-weight: bold !important;
+}
+
+#feedback-modal{
+  transform: translate(0,-50%) !important;
+  top: 50% !important;
+  margin: 0 auto !important;
+}
+
+.pagination-count{
+  margin-bottom: 5px;
+}
+
+.white_space {
+  white-space: normal;
+}
+}
+/* end */
