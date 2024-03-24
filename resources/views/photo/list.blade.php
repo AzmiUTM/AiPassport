@@ -52,13 +52,13 @@
                                 <td class="text-center">
                                     <h5>
                                         @if($photo->ppv_isvalid == 'Y')
-                                        <span class="badge badge-success-lighten">YES</span>
+                                        <span class="badge badge-success">YES</span>
                                         @elseif($photo->ppv_isvalid == 'N')
-                                        <span class="badge badge-warning-lighten">NO</span>
+                                        <span class="badge badge-warning">NO</span>
                                         @elseif($photo->ppv_isvalid == 'E')
-                                        <span class="badge badge-danger-lighten">ERROR</span>
+                                        <span class="badge badge-danger">ERROR</span>
                                         @else
-                                        <span class="badge badge-danger-lighten">{{$photo->ppv_isvalid}}</span>
+                                        <span class="badge badge-danger">{{$photo->ppv_isvalid}}</span>
                                         @endif
                                     </h5>
                                 </td>
