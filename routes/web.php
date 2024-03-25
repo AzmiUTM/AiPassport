@@ -30,13 +30,14 @@ Route::middleware(['auth','verified'])->group(function (){
     });
 });
 
-Route::middleware('auth')->group(function () {
+Route::middleware(['auth','XssSanitizer'])->group(function () {
     Route::controller(ProfileController::class)->group(function (){
         Route::get('/profile', 'edit')->name('profile.edit');
         Route::patch('/profile', 'update')->name('profile.update');
         Route::delete('/profile', 'destroy')->name('profile.destroy');
     });
 
+    
     Route::controller(SettingController::class)->group(function (){
         Route::get('/setting/list', 'list')->name('setting.list');
         Route::get('/setting/create', 'create')->name('setting.create');
@@ -45,6 +46,7 @@ Route::middleware('auth')->group(function () {
         Route::get('/setting/edit/{ppv_settingid}', 'edit')->name('setting.edit');
         Route::patch('/setting/update/{ppv_settingid}', 'update')->name('setting.update');
     });
+    
 
     Route::get('/photo/list', [PhotoController::class, 'list'])->name('photo.list');
     Route::get('/log/list', [LogController::class, 'list'])->name('log.list');
