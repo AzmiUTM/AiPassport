@@ -30,7 +30,9 @@
     <link rel="stylesheet" href="{{ asset('argon') }}/vendor/select2/dist/css/select2.min.css" type="text/css">
 
     <!-- Argon CSS -->
-    <link type="text/css" href="{{ asset('argon') }}/css/argon.css?v=1.0.0" rel="stylesheet">
+    
+    <link type="text/css" href="https://argon-dashboard-pro-laravel-bs4.creative-tim.com/css/argon.css?v=2.2.0" rel="stylesheet">
+    {{-- <link type="text/css" href="{{ asset('argon') }}/css/argon.css?v=1.0.0" rel="stylesheet"> --}}
 </head>
 
 <body class="{{ $class ?? '' }}">

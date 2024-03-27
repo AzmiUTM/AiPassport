@@ -96,8 +96,8 @@
                             </div> <!-- end row -->
 
 
-                            <div class="d-flex justify-content-end mt-3">
-                                <button type="submit" class="btn btn-primary">Submit</button>
+                            <div class="d-flex justify-content-center mt-3">
+                                <button type="submit" class="btn btn-success">Submit</button>
                             </div>
                         </form>
                     </div> <!-- end card body-->
