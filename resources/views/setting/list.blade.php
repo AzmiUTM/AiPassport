@@ -27,8 +27,8 @@
                         </div>
                     </div>
                     <div class="card-body">
-                        <div class="d-flex justify-content-start mb-2">
-                            <a href="{{route('setting.create')}}" class="btn btn-primary mb-2"><i class="mdi mdi-plus-circle me-2"></i> Add Setting</a>
+                        <div class="d-flex justify-content-end mb-2">
+                            <a href="{{route('setting.create')}}" class="btn btn-sm btn-outline-primary"><i class="fas fa-plus me-2"></i> Add</a>
                         </div>
                         <div class="table-responsive">
                             <table class="table table-flush" id="tblListStud">

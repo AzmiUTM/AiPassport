@@ -26,109 +26,111 @@
                     </div>
                 </div>
                 <div class="card-body">
-                    <table class="table table-flush" id="tblListStud">
-                        <thead class="thead-light">
-                            <tr>
-                                <th width="5%">No.</th>
-                                <th width="15%">Student Name</th>
-                                <th>Photo Url</th>
-                                <th>Setting Name</th>
-                                <th>Created</th>
-                                <th class="text-center">Status Validation</th>
-                                <th class="text-center">Actions</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach($photos as $key => $photo)
-                            <tr>
-                                <td>{{($key+1)}}</td>
-                                <td>{{$photo->PpvStudent->ppv_username}}</td>
-                                <td>
-                                    <img src="{{$photo->ppv_photourl}}" alt="" class="img-thumbnail w-50">
-                                    {{-- <a href="{{$photo->ppv_photourl}}" target="_blank">{{$photo->ppv_filename}}</a> --}}
-                                </td>
-                                <td>{{$photo->PpvSetting->ppv_settingname}}</td>
-                                <td>{{Carbon\Carbon::parse($photo->ppv_addedon)->format('d-m-Y h:i:s A')}}</td>
-                                <td class="text-center">
-                                    <h5>
-                                        @if($photo->ppv_isvalid == 'Y')
-                                        <span class="badge badge-success">YES</span>
-                                        @elseif($photo->ppv_isvalid == 'N')
-                                        <span class="badge badge-warning">NO</span>
-                                        @elseif($photo->ppv_isvalid == 'E')
-                                        <span class="badge badge-danger">ERROR</span>
-                                        @else
-                                        <span class="badge badge-danger">{{$photo->ppv_isvalid}}</span>
-                                        @endif
-                                    </h5>
-                                </td>
-                                <td class="text-center">
-                                    
-                                    <div class="btn-group dropright">
-                                        <button type="button" class="btn btn-sm btn-outline-primary dropdown-toggle"
-                                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            <i class="fa fa-search"></i>
-                                        </button>
-                                        <div class="dropdown-menu scrollable-menu">
-                                            <a class="dropdown-item " type="button" data-toggle="modal" data-target="#modal-photo-{{$key}}"><i class="mdi mdi-view-list-outline text-info"></i><span class="ms-1">View</span></a>
-        
-                                        </div>
-                                        <div class="modal fade" id="modal-photo-{{$key}}" tabindex="-1" role="dialog" aria-labelledby="thisModal"aria-hidden="true">
-                                            <div class="modal modal-dialog modal-dialog-centered modal-lg" role="document">
-                                                <div class="modal-content">
-        
-                                                    <div class="modal-header">
-                                                        <h4 class="modal-title" id="myLargeModalLabel">View Details</h4>
-                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                            <span aria-hidden="true">×</span>
-                                                        </button>
-                                                    </div>
-                                                    <div class="modal-body">
-                                                        <table class="table table-striped table-centered mb-0">
-                                                            <tr>
-                                                                <th>
-                                                                    Session
-                                                                </th>
-                                                                <td>
-                                                                    {{$photo->ppv_sesisemdaftar}}
-                                                                </td>
-        
-                                                            </tr>
-                                                            <tr>
-                                                                <th>
-                                                                    File Name
-                                                                </th>
-                                                                <td>
-                                                                    {{$photo->ppv_filename}}
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <th>
-                                                                    File Saiz
-                                                                </th>
-                                                                <td>
-                                                                    {{$photo->ppv_filesizekb}}
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <th>
-                                                                    Remark
-                                                                </th>
-                                                                <td>
-                                                                    {{$photo->ppv_remark}}
-                                                                </td>
-                                                            </tr>
-                                                        </table>
+                    <div class="table-responsive">
+                        <table class="table table-flush" id="tblListStud">
+                            <thead class="thead-light">
+                                <tr>
+                                    <th width="5%">No.</th>
+                                    <th width="15%">Student Name</th>
+                                    <th>Photo Url</th>
+                                    <th>Setting Name</th>
+                                    <th>Created</th>
+                                    <th class="text-center">Status Validation</th>
+                                    <th class="text-center">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach($photos as $key => $photo)
+                                <tr>
+                                    <td>{{($key+1)}}</td>
+                                    <td>{{$photo->PpvStudent->ppv_username}}</td>
+                                    <td>
+                                        <img src="{{$photo->ppv_photourl}}" alt="" class="img-thumbnail w-50">
+                                        {{-- <a href="{{$photo->ppv_photourl}}" target="_blank">{{$photo->ppv_filename}}</a> --}}
+                                    </td>
+                                    <td>{{$photo->PpvSetting->ppv_settingname}}</td>
+                                    <td>{{Carbon\Carbon::parse($photo->ppv_addedon)->format('d-m-Y h:i:s A')}}</td>
+                                    <td class="text-center">
+                                        <h5>
+                                            @if($photo->ppv_isvalid == 'Y')
+                                            <span class="badge badge-success">YES</span>
+                                            @elseif($photo->ppv_isvalid == 'N')
+                                            <span class="badge badge-warning">NO</span>
+                                            @elseif($photo->ppv_isvalid == 'E')
+                                            <span class="badge badge-danger">ERROR</span>
+                                            @else
+                                            <span class="badge badge-danger">{{$photo->ppv_isvalid}}</span>
+                                            @endif
+                                        </h5>
+                                    </td>
+                                    <td class="text-center">
+                                        
+                                        <div class="btn-group dropright">
+                                            <button type="button" class="btn btn-sm btn-outline-primary dropdown-toggle"
+                                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                <i class="fa fa-search"></i>
+                                            </button>
+                                            <div class="dropdown-menu scrollable-menu">
+                                                <a class="dropdown-item " type="button" data-toggle="modal" data-target="#modal-photo-{{$key}}"><i class="mdi mdi-view-list-outline text-info"></i><span class="ms-1">View</span></a>
+            
+                                            </div>
+                                            <div class="modal fade" id="modal-photo-{{$key}}" tabindex="-1" role="dialog" aria-labelledby="thisModal"aria-hidden="true">
+                                                <div class="modal modal-dialog modal-dialog-centered modal-lg" role="document">
+                                                    <div class="modal-content">
+            
+                                                        <div class="modal-header">
+                                                            <h4 class="modal-title" id="myLargeModalLabel">View Details</h4>
+                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                <span aria-hidden="true">×</span>
+                                                            </button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <table class="table table-striped table-centered mb-0">
+                                                                <tr>
+                                                                    <th>
+                                                                        Session
+                                                                    </th>
+                                                                    <td>
+                                                                        {{$photo->ppv_sesisemdaftar}}
+                                                                    </td>
+            
+                                                                </tr>
+                                                                <tr>
+                                                                    <th>
+                                                                        File Name
+                                                                    </th>
+                                                                    <td>
+                                                                        {{$photo->ppv_filename}}
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <th>
+                                                                        File Saiz
+                                                                    </th>
+                                                                    <td>
+                                                                        {{$photo->ppv_filesizekb}}
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <th>
+                                                                        Remark
+                                                                    </th>
+                                                                    <td>
+                                                                        {{$photo->ppv_remark}}
+                                                                    </td>
+                                                                </tr>
+                                                            </table>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                </td>
-                            </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
+                                    </td>
+                                </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
                 </div> <!-- end card body-->
             </div> <!-- end card -->
         </div><!-- end col-->
@@ -144,6 +146,11 @@
 <link rel="stylesheet" href="{{ asset('argon') }}/vendor/datatables.net-bs4/css/dataTables.bootstrap4.min.css">
 <link rel="stylesheet" href="{{ asset('argon') }}/vendor/datatables.net-buttons-bs4/css/buttons.bootstrap4.min.css">
 <link rel="stylesheet" href="{{ asset('argon') }}/vendor/datatables.net-select-bs4/css/select.bootstrap4.min.css">
+<style>
+    .table td{
+        white-space:unset !important;
+    }
+</style>
 @endpush
 
 @push('js')
